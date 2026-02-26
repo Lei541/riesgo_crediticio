@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 import sys
 from pathlib import Path
 
-# 1. Configuración de rutas (Debe ir ANTES de las importaciones locales)
+# 1. Configuración de rutas 
 root_path = Path.cwd().parent 
 if str(root_path / "src") not in sys.path:
     sys.path.append(str(root_path / "src"))
 
-# Ahora importamos tus módulos locales
+# Importamos módulos locales
 try:
     from Cargar_datos import cargar_datos
     from model_monitoring import monitor_data_drift
@@ -34,7 +34,7 @@ df = df.dropna().reset_index(drop=True)
 # MEZCLA ALEATORIA: Esto rompe cualquier orden previo
 df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
 
-# 2. División estándar (sin mezclar todo, para mantener tendencias temporales)
+# 2. División estándar (no aleatoria, para mantener tendencias temporales)
 mitad = len(df) // 2
 reference_df = df.iloc[:mitad].copy()
 current_df = df.iloc[mitad:].copy()
