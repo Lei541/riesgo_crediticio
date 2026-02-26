@@ -119,14 +119,11 @@ def train_and_evaluate_models(
     return results_df, trained_models
 
 
-import os
-import joblib
-
-
 # =========================================================
 # Guardar modelo entrenado
 # =========================================================
 
+import os
 import joblib
 from pathlib import Path
 
